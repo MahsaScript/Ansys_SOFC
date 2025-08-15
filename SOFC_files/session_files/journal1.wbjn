@@ -1,0 +1,27 @@
+# encoding: utf-8
+# 2020 R1
+SetScriptVersion(Version="20.1.164")
+template1 = GetTemplate(
+    TemplateName="Fluid Flow",
+    Solver="CFX")
+system1 = template1.CreateSystem()
+geometry1 = system1.GetContainer(ComponentName="Geometry")
+geometry1.SetFile(FilePath="C:/Users/mofid/Desktop/SOFC/Ansys SOFC/Geometry.x_b")
+geometry1.Edit(IsSpaceClaimGeometry=True)
+geometry1.Edit()
+meshComponent1 = system1.GetComponent(Name="Mesh")
+meshComponent1.Refresh()
+geometry1.Exit()
+geometry1.SetFile(FilePath="C:/Users/mofid/Desktop/SOFC/Ansys SOFC/Geometry.x_b")
+meshComponent1.Update(AllDependencies=True)
+Save(Overwrite=True)
+Save(Overwrite=True)
+mesh1 = system1.GetContainer(ComponentName="Mesh")
+mesh1.Edit()
+template2 = GetTemplate(
+    TemplateName="Electric",
+    Solver="ANSYS")
+system2 = template2.CreateSystem(
+    Position="Right",
+    RelativeTo=system1)
+Save(Overwrite=True)

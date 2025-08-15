@@ -1,0 +1,584 @@
+# encoding: utf-8
+# 2020 R1
+SetScriptVersion(Version="20.1.164")
+system1 = GetSystem(Name="CFX")
+setup1 = system1.GetContainer(ComponentName="Setup")
+setup1.Edit()
+setup1.SendCommand(Command="""VIEW:View 1
+  Camera Mode = User Specified
+  CAMERA:
+    Option = Pivot Point and Quaternion
+    Pivot Point = 0.005, 0.0005, -5e-05
+    Scale = 427.386
+    Pan = 0, 0
+    Rotation Quaternion = 0.438466, -0.39672, 0.803415, 0.0698231
+    
+  END
+
+END
+
+> update
+FLOW: Flow Analysis 1
+&replace   SOLVER CONTROL: 
+    Turbulence Numerics = First Order
+    ADVECTION SCHEME: 
+      Option = High Resolution
+    END # ADVECTION SCHEME:
+    CONVERGENCE CONTROL: 
+      Length Scale Option = Conservative
+      Maximum Number of Iterations = 100
+      Minimum Number of Iterations = 1
+      Timescale Control = Auto Timescale
+      Timescale Factor = 1.0
+    END # CONVERGENCE CONTROL:
+    CONVERGENCE CRITERIA: 
+      Residual Target = 1.E-4
+      Residual Type = RMS
+    END # CONVERGENCE CRITERIA:
+    DYNAMIC MODEL CONTROL: 
+      Global Dynamic Model Control = On
+    END # DYNAMIC MODEL CONTROL:
+    INTERRUPT CONTROL: 
+      Option = Any Interrupt
+      CONVERGENCE CONDITIONS: 
+        Option = Default Conditions
+      END # CONVERGENCE CONDITIONS:
+    END # INTERRUPT CONTROL:
+  END # SOLVER CONTROL:
+END # FLOW:Flow Analysis 1
+
+
+PARAMETERIZATION:
+END""")
+setup1.SendCommand(Command="""VIEW:View 1
+  Camera Mode = User Specified
+  CAMERA:
+    Option = Pivot Point and Quaternion
+    Pivot Point = 0.005, 0.0005, -5e-05
+    Scale = 427.386
+    Pan = 0, 0
+    Rotation Quaternion = 0.450002, -0.439216, 0.773591, 0.0783328
+    
+  END
+
+END
+
+> update
+FLOW: Flow Analysis 1
+  DOMAIN: Default Domain
+&replace     SUBDOMAIN: Subdomain 1
+      Coord Frame = Coord 0
+      Location = Assembly
+    END # SUBDOMAIN:Subdomain 1
+  END # DOMAIN:Default Domain
+END # FLOW:Flow Analysis 1
+
+
+PARAMETERIZATION:
+END""")
+setup1.SendCommand(Command="""FLOW: Flow Analysis 1
+  DOMAIN: Default Domain
+&replace     SUBDOMAIN: Subdomain 1
+      Coord Frame = Coord 0
+      Location = Assembly
+      SOURCES: 
+        EQUATION SOURCE: Edge
+          Option = Source
+          Source = 1 []
+        END # EQUATION SOURCE:Edge
+      END # SOURCES:
+    END # SUBDOMAIN:Subdomain 1
+  END # DOMAIN:Default Domain
+END # FLOW:Flow Analysis 1
+
+
+PARAMETERIZATION:
+END""")
+setup1.SendCommand(Command="""FLOW: Flow Analysis 1
+&replace   SOLVER CONTROL: 
+    Turbulence Numerics = First Order
+    ADVECTION SCHEME: 
+      Option = High Resolution
+    END # ADVECTION SCHEME:
+    CONVERGENCE CONTROL: 
+      Length Scale Option = Conservative
+      Maximum Number of Iterations = 100
+      Minimum Number of Iterations = 1
+      Timescale Control = Auto Timescale
+      Timescale Factor = 1.0
+    END # CONVERGENCE CONTROL:
+    CONVERGENCE CRITERIA: 
+      Residual Target = 1.E-4
+      Residual Type = RMS
+    END # CONVERGENCE CRITERIA:
+    DYNAMIC MODEL CONTROL: 
+      Global Dynamic Model Control = On
+    END # DYNAMIC MODEL CONTROL:
+    INTERRUPT CONTROL: 
+      Option = Any Interrupt
+      CONVERGENCE CONDITIONS: 
+        Option = Default Conditions
+      END # CONVERGENCE CONDITIONS:
+    END # INTERRUPT CONTROL:
+  END # SOLVER CONTROL:
+END # FLOW:Flow Analysis 1
+
+
+PARAMETERIZATION:
+END""")
+solution1 = system1.GetContainer(ComponentName="Solution")
+solution1.SetExecutionControl(CCL=r"""&replace SIMULATION CONTROL:
+  EXECUTION CONTROL:
+    EXECUTABLE SELECTION:
+      Double Precision = Off
+      Large Problem = Off
+    END
+    INTERPOLATOR STEP CONTROL:
+      Runtime Priority = Standard
+      MEMORY CONTROL:
+        Memory Allocation Factor = 1.0
+      END
+    END
+    PARTITIONER STEP CONTROL:
+      Multidomain Option = Automatic
+      Runtime Priority = Standard
+      MEMORY CONTROL:
+        Memory Allocation Factor = 1.0
+      END
+      PARTITION SMOOTHING:
+        Maximum Partition Smoothing Sweeps = 100
+        Option = Smooth
+      END
+      PARTITIONING TYPE:
+        MeTiS Type = k-way
+        Option = MeTiS
+        Partition Size Rule = Automatic
+      END
+    END
+    RUN DEFINITION:
+      Run Mode = Full
+      Solver Input File = C:\Users\mofid\Desktop\SOFC\Ansys SOFC\SOFC_files\dp0\CFX\CFX\Fluid Flow CFX.def
+    END
+    SOLVER STEP CONTROL:
+      Runtime Priority = Standard
+      MEMORY CONTROL:
+        Memory Allocation Factor = 1.0
+      END
+      PARALLEL ENVIRONMENT:
+        Number of Processes = 1
+        Start Method = Serial
+      END
+    END
+  END
+END
+""")
+solutionComponent1 = system1.GetComponent(Name="Solution")
+solutionComponent1.Update(Force=True)
+setup1.SendCommand(Command="""VIEW:View 1
+  Camera Mode = User Specified
+  CAMERA:
+    Option = Pivot Point and Quaternion
+    Pivot Point = 0.005, 0.0005, -5e-05
+    Scale = 427.386
+    Pan = 0.000485708, 0.000280216
+    Rotation Quaternion = 0.543772, -0.231784, 0.806582, -0.00158616
+    
+  END
+
+END
+
+> update
+LABEL CONTROL:
+  Show Labels = True
+END""")
+setup1.SendCommand(Command="""VIEW:View 1
+  Camera Mode = User Specified
+  CAMERA:
+    Option = Pivot Point and Quaternion
+    Pivot Point = 0.005, 0.0005, -5e-05
+    Scale = 427.386
+    Pan = 0.000485708, 0.000280216
+    Rotation Quaternion = 0.538298, -0.443295, 0.69164, 0.188009
+    
+  END
+
+END
+
+> update
+LABEL CONTROL:
+  Show Wall Markers = True
+END""")
+setup1.SendCommand(Command="""LABEL CONTROL:
+  Show Wall Markers = False
+END""")
+setup1.SendCommand(Command="""PRIMITIVE2D: F44.30
+  Show Label = On
+  Option = Render As
+  Pickable = 1
+  Visibility = On
+  Render Edge Angle = 30 [degree]
+  DEFINED RENDERING:
+    Draw Faces = On
+    Face Colour = 0.6, 0.6, 0.6
+    Transparency = 0.5
+    Surface Drawing = Smooth Shading
+    Lighting = Off
+    Specular Lighting = On
+    Culling Mode = No Culling
+    Draw Lines = On
+    Line Colour = 1, 0.333333, 0.498039
+    Line Width = 1
+  END
+END
+>forceupdate /PRIMITIVE2D:F44.30""")
+setup1.SendCommand(Command="""PRIMITIVE2D: F44.30
+  Show Label = On
+  Option = Render As
+  Pickable = 1
+  Visibility = On
+  Render Edge Angle = 30 [degree]
+  DEFINED RENDERING:
+    Draw Faces = On
+    Face Colour = 0.6, 0.6, 0.6
+    Transparency = 0.5
+    Surface Drawing = Smooth Shading
+    Lighting = Off
+    Specular Lighting = On
+    Culling Mode = No Culling
+    Draw Lines = On
+    Line Colour = 0, 0, 0
+    Line Width = 1
+  END
+END
+>forceupdate /PRIMITIVE2D:F44.30""")
+setup1.SendCommand(Command="""FLOW: Flow Analysis 1
+&replace   SOLVER CONTROL: 
+    Turbulence Numerics = First Order
+    ADVECTION SCHEME: 
+      Option = High Resolution
+    END # ADVECTION SCHEME:
+    CONVERGENCE CONTROL: 
+      Length Scale Option = Conservative
+      Maximum Number of Iterations = 200
+      Minimum Number of Iterations = 1
+      Timescale Control = Auto Timescale
+      Timescale Factor = 1.0
+    END # CONVERGENCE CONTROL:
+    CONVERGENCE CRITERIA: 
+      Residual Target = 1.E-4
+      Residual Type = RMS
+    END # CONVERGENCE CRITERIA:
+    DYNAMIC MODEL CONTROL: 
+      Global Dynamic Model Control = On
+    END # DYNAMIC MODEL CONTROL:
+    INTERRUPT CONTROL: 
+      Option = Any Interrupt
+      CONVERGENCE CONDITIONS: 
+        Option = Default Conditions
+      END # CONVERGENCE CONDITIONS:
+    END # INTERRUPT CONTROL:
+  END # SOLVER CONTROL:
+END # FLOW:Flow Analysis 1
+
+
+PARAMETERIZATION:
+END""")
+setup1.Exit()
+solution1.Exit()
+solution1.SetExecutionControl(CCL=r"""&replace SIMULATION CONTROL:
+  EXECUTION CONTROL:
+    EXECUTABLE SELECTION:
+      Double Precision = On
+      Large Problem = On
+    END
+    INTERPOLATOR STEP CONTROL:
+      Runtime Priority = Standard
+      MEMORY CONTROL:
+        Memory Allocation Factor = 1.0
+      END
+    END
+    PARTITIONER STEP CONTROL:
+      Multidomain Option = Automatic
+      Runtime Priority = Standard
+      MEMORY CONTROL:
+        Memory Allocation Factor = 1.0
+      END
+      PARTITION SMOOTHING:
+        Maximum Partition Smoothing Sweeps = 100
+        Option = Smooth
+      END
+      PARTITIONING TYPE:
+        MeTiS Type = k-way
+        Option = MeTiS
+        Partition Size Rule = Automatic
+      END
+    END
+    RUN DEFINITION:
+      Run Mode = Full
+      Solver Input File = C:\Users\mofid\Desktop\SOFC\Ansys SOFC\SOFC_files\dp0\CFX\CFX\Fluid Flow CFX.def
+    END
+    SOLVER STEP CONTROL:
+      Runtime Priority = Standard
+      MEMORY CONTROL:
+        Memory Allocation Factor = 1.0
+      END
+      PARALLEL ENVIRONMENT:
+        Number of Processes = 1
+        Start Method = Serial
+      END
+    END
+  END
+END
+""")
+solutionComponent1.Update(Force=True)
+mesh1 = system1.GetContainer(ComponentName="Mesh")
+mesh1.Edit()
+solution1.Exit()
+setup1.Edit()
+setup1.SendCommand(Command="""VIEW:View 1
+  Camera Mode = User Specified
+  CAMERA:
+    Option = Pivot Point and Quaternion
+    Pivot Point = 0.00465038, 0.0005, -6.76366e-05
+    Scale = 351.397
+    Pan = 0, 0
+    Rotation Quaternion = -0.306475, -0.330319, 0.177729, -0.87485
+    
+  END
+
+END
+
+VIEW:View 1
+  Light Angle = 50, 110
+END
+
+> update
+FLOW: Flow Analysis 1
+  DOMAIN: Default Domain
+&replace     BOUNDARY: Anode
+      Boundary Type = INLET
+      Interface Boundary = Off
+      Location = Inlet
+      BOUNDARY CONDITIONS: 
+        ADDITIONAL VARIABLE: Edge
+          Additional Variable Value = 0 [s]
+          Option = Value
+        END # ADDITIONAL VARIABLE:Edge
+        FLOW REGIME: 
+          Option = Subsonic
+        END # FLOW REGIME:
+        MASS AND MOMENTUM: 
+          Normal Speed = 0.001 [m s^-1]
+          Option = Normal Speed
+        END # MASS AND MOMENTUM:
+        TURBULENCE: 
+          Option = Medium Intensity and Eddy Viscosity Ratio
+        END # TURBULENCE:
+      END # BOUNDARY CONDITIONS:
+    END # BOUNDARY:Anode
+  END # DOMAIN:Default Domain
+END # FLOW:Flow Analysis 1
+
+
+PARAMETERIZATION:
+END""")
+setup1.SendCommand(Command="""FLOW: Flow Analysis 1
+  DOMAIN: Default Domain
+&replace     BOUNDARY: Cathode
+      Boundary Type = OUTLET
+      Interface Boundary = Off
+      Location = Outlet
+      BOUNDARY CONDITIONS: 
+        FLOW REGIME: 
+          Option = Subsonic
+        END # FLOW REGIME:
+        MASS AND MOMENTUM: 
+          Option = Static Pressure
+          Relative Pressure = 0 [Pa]
+        END # MASS AND MOMENTUM:
+      END # BOUNDARY CONDITIONS:
+    END # BOUNDARY:Cathode
+  END # DOMAIN:Default Domain
+END # FLOW:Flow Analysis 1
+
+
+PARAMETERIZATION:
+END""")
+setup1.SendCommand(Command="""FLOW: Flow Analysis 1
+&replace   SOLVER CONTROL: 
+    Turbulence Numerics = First Order
+    ADVECTION SCHEME: 
+      Option = High Resolution
+    END # ADVECTION SCHEME:
+    CONVERGENCE CONTROL: 
+      Length Scale Option = Conservative
+      Maximum Number of Iterations = 200
+      Minimum Number of Iterations = 1
+      Timescale Control = Auto Timescale
+      Timescale Factor = 1.0
+    END # CONVERGENCE CONTROL:
+    CONVERGENCE CRITERIA: 
+      Residual Target = 1.E-4
+      Residual Type = RMS
+    END # CONVERGENCE CRITERIA:
+    DYNAMIC MODEL CONTROL: 
+      Global Dynamic Model Control = On
+    END # DYNAMIC MODEL CONTROL:
+    INTERRUPT CONTROL: 
+      Option = Any Interrupt
+      CONVERGENCE CONDITIONS: 
+        Option = Default Conditions
+      END # CONVERGENCE CONDITIONS:
+    END # INTERRUPT CONTROL:
+  END # SOLVER CONTROL:
+END # FLOW:Flow Analysis 1
+
+
+PARAMETERIZATION:
+END""")
+setup1.SendCommand(Command="""FLOW: Flow Analysis 1
+  DOMAIN: Default Domain
+&replace     SUBDOMAIN: Subdomain 1
+      Coord Frame = Coord 0
+      Location = B125,B30,B78
+      SOURCES: 
+        EQUATION SOURCE: Edge
+          Option = Source
+          Source = 1 []
+        END # EQUATION SOURCE:Edge
+      END # SOURCES:
+    END # SUBDOMAIN:Subdomain 1
+  END # DOMAIN:Default Domain
+END # FLOW:Flow Analysis 1
+
+
+PARAMETERIZATION:
+END""")
+solution1.SetExecutionControl(CCL=r"""&replace SIMULATION CONTROL:
+  EXECUTION CONTROL:
+    EXECUTABLE SELECTION:
+      Double Precision = On
+      Large Problem = On
+    END
+    INTERPOLATOR STEP CONTROL:
+      Runtime Priority = Standard
+      MEMORY CONTROL:
+        Memory Allocation Factor = 1.0
+      END
+    END
+    PARTITIONER STEP CONTROL:
+      Multidomain Option = Automatic
+      Runtime Priority = Standard
+      MEMORY CONTROL:
+        Memory Allocation Factor = 1.0
+      END
+      PARTITION SMOOTHING:
+        Maximum Partition Smoothing Sweeps = 100
+        Option = Smooth
+      END
+      PARTITIONING TYPE:
+        MeTiS Type = k-way
+        Option = MeTiS
+        Partition Size Rule = Automatic
+      END
+    END
+    RUN DEFINITION:
+      Run Mode = Full
+      Solver Input File = C:\Users\mofid\Desktop\SOFC\Ansys SOFC\SOFC_files\dp0\CFX\CFX\Fluid Flow CFX.def
+    END
+    SOLVER STEP CONTROL:
+      Runtime Priority = Standard
+      MEMORY CONTROL:
+        Memory Allocation Factor = 1.0
+      END
+      PARALLEL ENVIRONMENT:
+        Number of Processes = 1
+        Start Method = Serial
+      END
+    END
+  END
+END
+""")
+solutionComponent1.Update(Force=True)
+solution1.Exit()
+setup1.SendCommand(Command=">delete /FLOW:Flow Analysis 1/DOMAIN:Default Domain/SUBDOMAIN:Subdomain 1")
+setup1.SendCommand(Command="""FLOW: Flow Analysis 1
+&replace   SOLVER CONTROL: 
+    Turbulence Numerics = First Order
+    ADVECTION SCHEME: 
+      Option = High Resolution
+    END # ADVECTION SCHEME:
+    CONVERGENCE CONTROL: 
+      Length Scale Option = Conservative
+      Maximum Number of Iterations = 100
+      Minimum Number of Iterations = 1
+      Timescale Control = Auto Timescale
+      Timescale Factor = 1.0
+    END # CONVERGENCE CONTROL:
+    CONVERGENCE CRITERIA: 
+      Residual Target = 1.E-4
+      Residual Type = RMS
+    END # CONVERGENCE CRITERIA:
+    DYNAMIC MODEL CONTROL: 
+      Global Dynamic Model Control = On
+    END # DYNAMIC MODEL CONTROL:
+    INTERRUPT CONTROL: 
+      Option = Any Interrupt
+      CONVERGENCE CONDITIONS: 
+        Option = Default Conditions
+      END # CONVERGENCE CONDITIONS:
+    END # INTERRUPT CONTROL:
+  END # SOLVER CONTROL:
+END # FLOW:Flow Analysis 1
+
+
+PARAMETERIZATION:
+END""")
+setup1.Exit()
+solution1.SetExecutionControl(CCL=r"""&replace SIMULATION CONTROL:
+  EXECUTION CONTROL:
+    EXECUTABLE SELECTION:
+      Double Precision = Off
+      Large Problem = Off
+    END
+    INTERPOLATOR STEP CONTROL:
+      Runtime Priority = Standard
+      MEMORY CONTROL:
+        Memory Allocation Factor = 1.0
+      END
+    END
+    PARTITIONER STEP CONTROL:
+      Multidomain Option = Automatic
+      Runtime Priority = Standard
+      MEMORY CONTROL:
+        Memory Allocation Factor = 1.0
+      END
+      PARTITION SMOOTHING:
+        Maximum Partition Smoothing Sweeps = 100
+        Option = Smooth
+      END
+      PARTITIONING TYPE:
+        MeTiS Type = k-way
+        Option = MeTiS
+        Partition Size Rule = Automatic
+      END
+    END
+    RUN DEFINITION:
+      Run Mode = Full
+      Solver Input File = C:\Users\mofid\Desktop\SOFC\Ansys SOFC\SOFC_files\dp0\CFX\CFX\Fluid Flow CFX.def
+    END
+    SOLVER STEP CONTROL:
+      Runtime Priority = Standard
+      MEMORY CONTROL:
+        Memory Allocation Factor = 1.0
+      END
+      PARALLEL ENVIRONMENT:
+        Number of Processes = 1
+        Start Method = Serial
+      END
+    END
+  END
+END
+""")
+solutionComponent1.Update(Force=True)
+solution1.Exit()

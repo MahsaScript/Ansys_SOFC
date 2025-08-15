@@ -1,0 +1,491 @@
+# encoding: utf-8
+# 2020 R1
+SetScriptVersion(Version="20.1.164")
+system1 = GetSystem(Name="SYS")
+mesh1 = system1.GetContainer(ComponentName="Mesh")
+mesh1.Edit()
+system2 = GetSystem(Name="FLU")
+solution1 = system2.GetContainer(ComponentName="Solution")
+solution1.Edit()
+setup1 = system2.GetContainer(ComponentName="Setup")
+setup1.SendCommand(Command="(cx-use-window-id 1)(cx-set-camera-relative '(0.0116387 -0.0108363 -0.013643) '(0 0 0) '(0.228441 0.171232 0.10658) 0 0)")
+mesh1.Exit()
+fluentLauncherSettings1 = setup1.GetFluentLauncherSettings()
+fluentLauncherSettings1.SetEntityProperties(Properties=Set(EnvPath={}))
+setup1.Edit()
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Setup|Mesh Interfaces|contact_region_2"))(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Setup|Mesh Interfaces|contact_region"))')
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Setup|Mesh Interfaces|contact_region"))(cx-gui-do cx-activate-item "NavigationPane*List_Tree1")')
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Setup|Mesh Interfaces|contact_region"))(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Setup|Mesh Interfaces|contact_region"))(cx-gui-do cx-activate-item "Mesh Interfaces*PanelButtons*PushButton2(Cancel)")')
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Setup|Boundary Conditions|Interface|contact_region_2-src (interface, id=25)"))')
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Setup|Boundary Conditions|Interface|contact_region_2-src (interface, id=25)"))(cx-gui-do cx-activate-item "NavigationPane*List_Tree1")')
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Setup|Boundary Conditions|Interface|contact_region_2-src (interface, id=25)"))(cx-gui-do cx-activate-item "Interface*PanelButtons*PushButton2(Cancel)")')
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Setup|Boundary Conditions|Internal|interior-33 (interior, id=33)"))')
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Setup|Boundary Conditions|Internal|interior-33 (interior, id=33)"))(cx-gui-do cx-activate-item "NavigationPane*List_Tree1")')
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Setup|Boundary Conditions|Internal|interior-33 (interior, id=33)"))(cx-gui-do cx-activate-item "Interior*PanelButtons*PushButton2(Cancel)")')
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Setup|Boundary Conditions|Internal|interior-cathode_catalyst (interior, id=3)"))')
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Setup|Boundary Conditions|Internal|interior-cathode_catalyst (interior, id=3)"))(cx-gui-do cx-activate-item "NavigationPane*List_Tree1")')
+setup1.SendCommand(Command="(cx-gui-do cx-set-list-tree-selections \"NavigationPane*List_Tree1\" (list \"Setup|Boundary Conditions|Internal|interior-cathode_catalyst (interior, id=3)\"))(cx-use-window-id 1)(cx-set-camera-relative '(0.011942 -0.0189875 -0.0185879) '(0 0 0) '(0.434293 0.190508 0.0641403) 0 0)(cx-gui-do cx-activate-item \"Interior*PanelButtons*PushButton2(Cancel)\")")
+setup1.SendCommand(Command="(cx-use-window-id 1)(cx-set-camera-relative '(-8.08761e-06 0.0067974 0.00788197) '(0 0 0) '(-0.10586 -0.0122069 0.00386214) 0 0)(cx-use-window-id 1)(cxg-clear-all-selections (cx-active-window))(cxg-add-surfaces-to-selection '(wall-cathode_channel.1) (cx-active-window))(cx-use-window-id 1)(cxg-clear-all-selections (cx-active-window))(cxg-add-surfaces-to-selection '(wall-cathode_channel.1) (cx-active-window))(cx-use-window-id 1)(cxg-clear-all-selections (cx-active-window))(cxg-add-surfaces-to-selection '(wall-cathode_channel.1) (cx-active-window))(cx-use-window-id 1)(cxg-clear-all-selections (cx-active-window))(cxg-add-surfaces-to-selection '(wall-anode_channel.1) (cx-active-window))(cx-gui-do cx-set-expression-entry \"Quick Edit*Table1*ExpressionEntry4(Temperature)\" '(\"270\" . 0))(cx-gui-do cx-activate-item \"Quick Edit*Table1*ExpressionEntry4(Temperature)\")")
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Quick Edit*Table1*PushButton12(More)")')
+setup1.SendCommand(Command="(cx-gui-do cx-set-expression-entry \"Wall*Frame3*Frame1(Momentum)*Table1*Frame1*Frame1*Table1*Table2(Motion)*Table2*Table1*ExpressionEntry1(Speed)\" '(\"0.01\" . 0))(cx-gui-do cx-set-toggle-button2 \"Wall*Frame3*Frame2(Thermal)*Frame1*Frame1(Thermal Conditions)*ToggleBox1*Heat Flux\" #t)(cx-gui-do cx-activate-item \"Wall*Frame3*Frame2(Thermal)*Frame1*Frame1(Thermal Conditions)*ToggleBox1*Heat Flux\")(cx-gui-do cx-set-toggle-button2 \"Wall*Frame3*Frame2(Thermal)*Frame1*Frame1(Thermal Conditions)*ToggleBox1*Temperature\" #t)(cx-gui-do cx-activate-item \"Wall*Frame3*Frame2(Thermal)*Frame1*Frame1(Thermal Conditions)*ToggleBox1*Temperature\")(cx-gui-do cx-set-expression-entry \"Wall*Frame3*Frame1(Momentum)*Table1*Frame1*Frame1*Table1*Table2(Motion)*Table2*Table2(Direction)*ExpressionEntry2(Y)\" '(\"1\" . 0))(cx-gui-do cx-activate-item \"Wall*PanelButtons*PushButton1(OK)\")")
+setup1.SendCommand(Command="(cx-use-window-id 1)(cxg-clear-all-selections (cx-active-window))(cxg-add-surfaces-to-selection '(wall-cathode_channel.1) (cx-active-window))")
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Quick Edit*Table1*PushButton12(More)")')
+setup1.SendCommand(Command="(cx-gui-do cx-set-expression-entry \"Wall*Frame3*Frame7(UDS)*Frame1*Table1*Table2(User-Defined Scalar Boundary Value)*Table1*ExpressionEntry1(Electric Potential)\" '(\"12\" . 0))(cx-gui-do cx-set-expression-entry \"Wall*Frame3*Frame2(Thermal)*Frame1*Frame1(Thermal Conditions)*Table3*Table1*Table1*ExpressionEntry1(Temperature)\" '(\"333\" . 0))(cx-gui-do cx-activate-item \"Wall*PanelButtons*PushButton1(OK)\")")
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Solution|Initialization"))')
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Solution|Initialization"))(cx-gui-do cx-activate-item "NavigationPane*List_Tree1")')
+setup1.SendCommand(Command="(cx-gui-do cx-set-list-tree-selections \"NavigationPane*List_Tree1\" (list \"Solution|Initialization\"))(cx-use-window-id 1)(cxg-clear-all-selections (cx-active-window))(cxg-add-surfaces-to-selection '(wall-cathode_channel.1) (cx-active-window))")
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Quick Edit*Table1*PushButton2(icon_close)")')
+setup1.SendCommand(Command="(cx-gui-do cx-set-toggle-button2 \"Solution Initialization*Table1*ToggleBox3(Initialization Methods)*Standard Initialization\" #t)(cx-gui-do cx-activate-item \"Solution Initialization*Table1*ToggleBox3(Initialization Methods)*Standard Initialization\")(cx-gui-do cx-set-list-selections \"Solution Initialization*Table1*DropDownList1(Compute from)\" '( 15))")
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Solution Initialization*Table1*DropDownList1(Compute from)")')
+setup1.SendCommand(Command="(cx-gui-do cx-set-toggle-button2 \"Solution Initialization*Table1*ToggleBox2(Reference Frame)*Absolute\" #t)(cx-gui-do cx-activate-item \"Solution Initialization*Table1*ToggleBox2(Reference Frame)*Absolute\")(cx-gui-do cx-set-real-entry-list \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry5(h2)\" '( 0.2))(cx-gui-do cx-activate-item \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry5(h2)\")")
+setup1.SendCommand(Command="(cx-gui-do cx-set-real-entry-list \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry6(o2)\" '( 0.2))(cx-gui-do cx-activate-item \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry6(o2)\")")
+setup1.SendCommand(Command="(cx-gui-do cx-set-real-entry-list \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry7(h2o)\" '( 0.5))(cx-gui-do cx-activate-item \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry7(h2o)\")")
+setup1.SendCommand(Command="(cx-gui-do cx-set-real-entry-list \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry9(Electric Potential)\" '( 12))(cx-gui-do cx-activate-item \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry9(Electric Potential)\")")
+setup1.SendCommand(Command="(cx-gui-do cx-set-real-entry-list \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry1(Gauge Pressure)\" '( 50))(cx-gui-do cx-activate-item \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry1(Gauge Pressure)\")")
+setup1.SendCommand(Command="(cx-gui-do cx-set-real-entry-list \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry2(X Velocity)\" '( 0.1))(cx-gui-do cx-activate-item \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry2(X Velocity)\")")
+setup1.SendCommand(Command="(cx-gui-do cx-set-real-entry-list \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry3(Y Velocity)\" '( 0.2))(cx-gui-do cx-activate-item \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry3(Y Velocity)\")")
+setup1.SendCommand(Command="(cx-gui-do cx-set-real-entry-list \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry4(Z Velocity)\" '( 0.3))(cx-gui-do cx-activate-item \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry4(Z Velocity)\")")
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Solution Initialization*Table1*Frame8*PushButton1(Initialize)")')
+fluentLauncherSettings1.SetEntityProperties(Properties=Set(EnvPath={}, NumberOfProcessors=1))
+setup1.Edit()
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Solution|Initialization"))')
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Solution|Initialization"))(cx-gui-do cx-activate-item "NavigationPane*List_Tree1")')
+setup1.SendCommand(Command="(cx-gui-do cx-set-list-tree-selections \"NavigationPane*List_Tree1\" (list \"Solution|Initialization\"))(cx-gui-do cx-set-toggle-button2 \"Solution Initialization*Table1*ToggleBox3(Initialization Methods)*Standard Initialization\" #t)(cx-gui-do cx-activate-item \"Solution Initialization*Table1*ToggleBox3(Initialization Methods)*Standard Initialization\")(cx-gui-do cx-set-list-selections \"Solution Initialization*Table1*DropDownList1(Compute from)\" '( 15))")
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Solution Initialization*Table1*DropDownList1(Compute from)")')
+setup1.SendCommand(Command="(cx-gui-do cx-set-real-entry-list \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry9(Electric Potential)\" '( 10))(cx-gui-do cx-activate-item \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry9(Electric Potential)\")")
+setup1.SendCommand(Command="(cx-gui-do cx-set-real-entry-list \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry6(o2)\" '( 0.2))(cx-gui-do cx-activate-item \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry6(o2)\")")
+setup1.SendCommand(Command="(cx-gui-do cx-set-real-entry-list \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry5(h2)\" '( 0.1))(cx-gui-do cx-activate-item \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry5(h2)\")")
+setup1.SendCommand(Command="(cx-gui-do cx-set-real-entry-list \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry2(X Velocity)\" '( 0.03))(cx-gui-do cx-activate-item \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry2(X Velocity)\")")
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Solution Initialization*Table1*Frame8*PushButton1(Initialize)")')
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Solution Initialization*Table1*Frame8*PushButton1(Initialize)")(cx-gui-do cx-activate-item "Question*OK")')
+setup1.SendCommand(Command="(cx-gui-do cx-set-real-entry-list \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry1(Gauge Pressure)\" '( 10))(cx-gui-do cx-activate-item \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry1(Gauge Pressure)\")")
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Solution Initialization*Table1*Frame8*PushButton1(Initialize)")(cx-gui-do cx-activate-item "Question*OK")')
+setup1.SendCommand(Command="(cx-gui-do cx-set-real-entry-list \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry3(Y Velocity)\" '( 0.02))(cx-gui-do cx-activate-item \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry3(Y Velocity)\")")
+setup1.SendCommand(Command="(cx-gui-do cx-set-real-entry-list \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry4(Z Velocity)\" '( 0.01))(cx-gui-do cx-activate-item \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry4(Z Velocity)\")")
+setup1.SendCommand(Command="(cx-gui-do cx-set-real-entry-list \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry7(h2o)\" '( 0.2))(cx-gui-do cx-activate-item \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry7(h2o)\")")
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Solution Initialization*Table1*Frame8*PushButton1(Initialize)")(cx-gui-do cx-activate-item "Question*OK")')
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Solution|Methods"))')
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Solution|Methods"))(cx-gui-do cx-activate-item "NavigationPane*List_Tree1")')
+setup1.SendCommand(Command="(cx-gui-do cx-set-list-tree-selections \"NavigationPane*List_Tree1\" (list \"Solution|Methods\"))(cx-gui-do cx-set-list-selections \"Solution Methods*Table1*Table2(Pressure-Velocity Coupling)*DropDownList2(Scheme)\" '( 1))")
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Solution Methods*Table1*Table2(Pressure-Velocity Coupling)*DropDownList2(Scheme)")')
+setup1.SendCommand(Command="(cx-gui-do cx-set-list-selections \"Solution Methods*Table1*Table3(Spatial Discretization)*DropDownList1(Gradient)\" '( 1))")
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Solution Methods*Table1*Table3(Spatial Discretization)*DropDownList1(Gradient)")')
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Solution|Controls"))')
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Solution|Controls"))(cx-gui-do cx-activate-item "NavigationPane*List_Tree1")')
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Solution|Controls"))(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Solution|Monitors|Residual"))')
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Solution|Monitors|Residual"))(cx-gui-do cx-activate-item "NavigationPane*List_Tree1")')
+setup1.SendCommand(Command="(cx-gui-do cx-set-list-tree-selections \"NavigationPane*List_Tree1\" (list \"Solution|Monitors|Residual\"))(cx-gui-do cx-set-real-entry-list \"Residual Monitors*Table1*Table2*Table1*Table1(Equations)*RealEntry11\" '( 1e-06))(cx-gui-do cx-set-real-entry-list \"Residual Monitors*Table1*Table2*Table1*Table1(Equations)*RealEntry17\" '( 1e-06))(cx-gui-do cx-set-real-entry-list \"Residual Monitors*Table1*Table2*Table1*Table1(Equations)*RealEntry23\" '( 1e-06))(cx-gui-do cx-set-real-entry-list \"Residual Monitors*Table1*Table2*Table1*Table1(Equations)*RealEntry29\" '( 1e-06))(cx-gui-do cx-set-real-entry-list \"Residual Monitors*Table1*Table2*Table1*Table1(Equations)*RealEntry41\" '( 1e-06))(cx-gui-do cx-set-real-entry-list \"Residual Monitors*Table1*Table2*Table1*Table1(Equations)*RealEntry71\" '( 1e-06))(cx-gui-do cx-set-real-entry-list \"Residual Monitors*Table1*Table2*Table1*Table1(Equations)*RealEntry65\" '( 1e-06))(cx-gui-do cx-set-real-entry-list \"Residual Monitors*Table1*Table2*Table1*Table1(Equations)*RealEntry59\" '( 1e-06))(cx-gui-do cx-set-real-entry-list \"Residual Monitors*Table1*Table2*Table1*Table1(Equations)*RealEntry53\" '( 1e-06))(cx-gui-do cx-set-real-entry-list \"Residual Monitors*Table1*Table2*Table1*Table1(Equations)*RealEntry47\" '( 1e-06))(cx-gui-do cx-activate-item \"Residual Monitors*PanelButtons*PushButton1(OK)\")")
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Solution|Initialization"))')
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Solution|Initialization"))(cx-gui-do cx-activate-item "NavigationPane*List_Tree1")')
+setup1.SendCommand(Command="(cx-gui-do cx-set-list-tree-selections \"NavigationPane*List_Tree1\" (list \"Solution|Initialization\"))(cx-gui-do cx-set-list-selections \"Solution Initialization*Table1*DropDownList1(Compute from)\" '( 15))")
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Solution Initialization*Table1*DropDownList1(Compute from)")')
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Solution Initialization*Table1*Frame8*PushButton1(Initialize)")(cx-gui-do cx-activate-item "Question*OK")')
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Solution|Run Calculation"))')
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Solution|Run Calculation"))(cx-gui-do cx-activate-item "NavigationPane*List_Tree1")')
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Solution|Run Calculation"))(cx-gui-do cx-set-integer-entry "Run Calculation*Table1*Table3(Parameters)*Table1*Table1*IntegerEntry1(Number of Iterations)" 100)(cx-gui-do cx-activate-item "Run Calculation*Table1*Table3(Parameters)*Table1*Table1*IntegerEntry1(Number of Iterations)")')
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Run Calculation*Table1*Table6(Solution Advancement)*Table1*PushButton1(Calculate)")(cx-gui-do cx-activate-item "Question*OK")(cx-gui-do cx-activate-item "Question*OK")')
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Information*OK")(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Solution|Run Calculation"))(cx-gui-do cx-list-tree-right-click "NavigationPane*List_Tree1" )(cx-gui-do cx-set-integer-entry "Run Calculation*Table1*Table3(Parameters)*Table1*Table1*IntegerEntry1(Number of Iterations)" 300)(cx-gui-do cx-activate-item "Run Calculation*Table1*Table3(Parameters)*Table1*Table1*IntegerEntry1(Number of Iterations)")')
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Run Calculation*Table1*Table6(Solution Advancement)*Table1*PushButton1(Calculate)")(cx-gui-do cx-activate-item "Question*OK")(cx-gui-do cx-activate-item "Question*Cancel")(cx-gui-do cx-activate-item "Error*OK")')
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Information*OK")(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Solution|Initialization"))')
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Solution|Initialization"))(cx-gui-do cx-activate-item "NavigationPane*List_Tree1")')
+setup1.SendCommand(Command="(cx-gui-do cx-set-list-tree-selections \"NavigationPane*List_Tree1\" (list \"Solution|Initialization\"))(cx-gui-do cx-set-real-entry-list \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry1(Gauge Pressure)\" '( 0))(cx-gui-do cx-activate-item \"Solution Initialization*Table1*Table6(Initial Values)*RealEntry1(Gauge Pressure)\")")
+setup1.SendCommand(Command="(cx-gui-do cx-set-list-selections \"Solution Initialization*Table1*DropDownList1(Compute from)\" '( 15))")
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Solution Initialization*Table1*DropDownList1(Compute from)")')
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Solution Initialization*Table1*Frame8*PushButton1(Initialize)")(cx-gui-do cx-activate-item "Question*OK")')
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Solution|Run Calculation"))')
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Solution|Run Calculation"))(cx-gui-do cx-activate-item "NavigationPane*List_Tree1")')
+setup1.SendCommand(Command='(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Solution|Run Calculation"))')
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Run Calculation*Table1*Table6(Solution Advancement)*Table1*PushButton1(Calculate)")(cx-gui-do cx-activate-item "Question*OK")(cx-gui-do cx-activate-item "Question*OK")')
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Information*OK")(cx-gui-do cx-set-list-tree-selections "NavigationPane*List_Tree1" (list "Results|Graphics"))(cx-gui-do cx-list-tree-right-click "NavigationPane*List_Tree1" )')
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "MenuBar*PopupMenuTree-Graphics*Views...")')
+setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Views*PanelButtons*PushButton2(Close)")')
+system3 = GetSystem(Name="FFF")
+results1 = system3.GetContainer(ComponentName="Results")
+results1.Edit()
+results1.SendCommand(Command="""VIEW:View 1
+  Camera Mode = User Specified
+  CAMERA:
+    Option = Pivot Point and Quaternion
+    Pivot Point = 0.005, 0.0005, -5e-05
+    Scale = 321.359
+    Pan = 0, 0
+    Rotation Quaternion = 0.279848, -0.364705, -0.115917, 0.880476
+    
+  END
+
+END
+
+> update
+# Sending visibility action from ViewUtilities
+>show /DATA READER/CASE:Case FFF/BOUNDARY:anode_cl, view=/VIEW:View 1""")
+results1.SendCommand(Command="""# Sending visibility action from ViewUtilities
+>show /DATA READER/CASE:Case FFF/BOUNDARY:contact_region src, view=/VIEW:View 1""")
+results1.SendCommand(Command="""# Sending visibility action from ViewUtilities
+>show /DATA READER/CASE:Case FFF/BOUNDARY:wall anode_catalyst, view=/VIEW:View 1""")
+results1.SendCommand(Command="""# Sending visibility action from ViewUtilities
+>show /DATA READER/CASE:Case FFF/BOUNDARY:contact_region_2 src, view=/VIEW:View 1""")
+results1.SendCommand(Command="""# Sending visibility action from ViewUtilities
+>show /DATA READER/CASE:Case FFF/BOUNDARY:contact_region_2 trg, view=/VIEW:View 1""")
+results1.SendCommand(Command="""# Sending visibility action from ViewUtilities
+>show /DATA READER/CASE:Case FFF/BOUNDARY:wall anode_channel, view=/VIEW:View 1""")
+results1.SendCommand(Command="""# Sending visibility action from ViewUtilities
+>show /DATA READER/CASE:Case FFF/BOUNDARY:wall anode_channel.1, view=/VIEW:View 1""")
+results1.SendCommand(Command="""# Sending visibility action from ViewUtilities
+>show /DATA READER/CASE:Case FFF/BOUNDARY:cathode_cl, view=/VIEW:View 1""")
+results1.SendCommand(Command="""# Sending visibility action from ViewUtilities
+>show /DATA READER/CASE:Case FFF/BOUNDARY:contact_region_3 trg, view=/VIEW:View 1""")
+results1.SendCommand(Command="""# Sending visibility action from ViewUtilities
+>show /DATA READER/CASE:Case FFF/BOUNDARY:contact_region_4 src, view=/VIEW:View 1""")
+results1.SendCommand(Command="""# Sending visibility action from ViewUtilities
+>show /DATA READER/CASE:Case FFF/BOUNDARY:wall cathode_catalyst, view=/VIEW:View 1""")
+results1.SendCommand(Command="""# Sending visibility action from ViewUtilities
+>show /DATA READER/CASE:Case FFF/BOUNDARY:contact_region_4 trg, view=/VIEW:View 1""")
+results1.SendCommand(Command="""# Sending visibility action from ViewUtilities
+>show /DATA READER/CASE:Case FFF/BOUNDARY:wall cathode_channel, view=/VIEW:View 1""")
+results1.SendCommand(Command="""# Sending visibility action from ViewUtilities
+>show /DATA READER/CASE:Case FFF/BOUNDARY:wall cathode_channel.1, view=/VIEW:View 1""")
+results1.SendCommand(Command="""# Sending visibility action from ViewUtilities
+>show /DATA READER/CASE:Case FFF/BOUNDARY:contact_region trg, view=/VIEW:View 1""")
+results1.SendCommand(Command="""# Sending visibility action from ViewUtilities
+>show /DATA READER/CASE:Case FFF/BOUNDARY:contact_region_3 src, view=/VIEW:View 1""")
+results1.SendCommand(Command="""# Sending visibility action from ViewUtilities
+>show /DATA READER/CASE:Case FFF/BOUNDARY:membrane, view=/VIEW:View 1""")
+results1.SendCommand(Command="""# Sending visibility action from ViewUtilities
+>show /DATA READER/CASE:Case FFF/BOUNDARY:wall electrolyte_membrane, view=/VIEW:View 1""")
+results1.SendCommand(Command="> autolegend plot=/PLANE:Plane 1, view=VIEW:View 1")
+results1.SendCommand(Command="""VIEW:View 1
+  Camera Mode = User Specified
+  CAMERA:
+    Option = Pivot Point and Quaternion
+    Pivot Point = 0.005, 0.0005, -5e-05
+    Scale = 321.359
+    Pan = 0, 0
+    Rotation Quaternion = 0.159008, -0.673126, 0.154117, 0.7056
+    
+  END
+
+END
+
+> update
+PLANE:Plane 1
+Apply Instancing Transform = On
+Apply Texture = Off
+Blend Texture = On
+Bound Radius = 0.5 [m]
+Colour = 0.75, 0.75, 0.75
+Colour Map = Default Colour Map
+Colour Mode = Constant
+Colour Scale = Linear
+Colour Variable = Pressure
+Colour Variable Boundary Values = Conservative
+Culling Mode = No Culling
+Direction 1 Bound = 1.0 [m]
+Direction 1 Orientation = 0 [degree]
+Direction 1 Points = 10
+Direction 2 Bound = 1.0 [m]
+Direction 2 Points = 10
+Domain List = /DOMAIN GROUP:All Domains
+Draw Faces = On
+Draw Lines = Off
+Instancing Transform = /DEFAULT INSTANCE TRANSFORM:Default Transform
+Invert Plane Bound = Off
+Lighting = On
+Line Colour = 0, 0, 0
+Line Colour Mode = Default
+Line Width = 1
+Max = 0.0
+Min = 0.0
+Normal = 1 , 0 , 0 
+Option = ZX Plane
+Plane Bound = Rectangular
+Plane Type = Slice
+Point = 0 [m], 0 [m], 0 [m]
+Point 1 = 0 [m], 0 [m], 0 [m]
+Point 2 = 1 [m], 0 [m], 0 [m]
+Point 3 = 0 [m], 1 [m], 0 [m]
+Range = Global
+Render Edge Angle = 0 [degree]
+Specular Lighting = On
+Surface Drawing = Smooth Shading
+Texture Angle = 0
+Texture Direction = 0 , 1 , 0 
+Texture File =  
+Texture Material = Metal
+Texture Position = 0 , 0 
+Texture Scale = 1
+Texture Type = Predefined
+Tile Texture = Off
+Transform Texture = Off
+Transparency = 0.0
+X = 0.0 [m]
+Y = 0.00039 [m]
+Z = 0.0 [m]
+  OBJECT VIEW TRANSFORM:
+  Apply Reflection = Off
+  Apply Rotation = Off
+  Apply Scale = Off
+  Apply Translation = Off
+  Principal Axis = Z
+  Reflection Plane Option = XY Plane
+  Rotation Angle = 0.0 [degree]
+  Rotation Axis From = 0 [m], 0 [m], 0 [m]
+  Rotation Axis To = 0 [m], 0 [m], 0 [m]
+  Rotation Axis Type = Principal Axis
+  Scale Vector = 1 , 1 , 1 
+  Translation Vector = 0 [m], 0 [m], 0 [m]
+  X = 0.0 [m]
+  Y = 0.0 [m]
+  Z = 0.0 [m]
+  END
+END""")
+results1.SendCommand(Command="""# Sending visibility action from ViewUtilities
+>show /PLANE:Plane 1, view=/VIEW:View 1""")
+results1.SendCommand(Command="""VIEW:View 1
+  Camera Mode = User Specified
+  CAMERA:
+    Option = Pivot Point and Quaternion
+    Pivot Point = 0.005, 0.0005, -5e-05
+    Scale = 321.359
+    Pan = 0, 0
+    Rotation Quaternion = 0.0834032, -0.717804, 0.0907269, 0.685259
+    
+  END
+
+END
+
+> update
+PLANE:Plane 1
+Apply Instancing Transform = On
+Apply Texture = Off
+Blend Texture = On
+Bound Radius = 0.5 [m]
+Colour = 0.75, 0.75, 0.75
+Colour Map = Default Colour Map
+Colour Mode = Constant
+Colour Scale = Linear
+Colour Variable = Pressure
+Colour Variable Boundary Values = Conservative
+Culling Mode = No Culling
+Direction 1 Bound = 1.0 [m]
+Direction 1 Orientation = 0 [degree]
+Direction 1 Points = 10
+Direction 2 Bound = 1.0 [m]
+Direction 2 Points = 10
+Domain List = /DOMAIN GROUP:All Domains
+Draw Faces = On
+Draw Lines = Off
+Instancing Transform = /DEFAULT INSTANCE TRANSFORM:Default Transform
+Invert Plane Bound = Off
+Lighting = On
+Line Colour = 0, 0, 0
+Line Colour Mode = Default
+Line Width = 1
+Max = 0.0 [Pa]
+Min = 0.0 [Pa]
+Normal = 1 , 0 , 0 
+Option = ZX Plane
+Plane Bound = Rectangular
+Plane Type = Slice
+Point = 0 [m], 0 [m], 0 [m]
+Point 1 = 0 [m], 0 [m], 0 [m]
+Point 2 = 1 [m], 0 [m], 0 [m]
+Point 3 = 0 [m], 1 [m], 0 [m]
+Range = Global
+Render Edge Angle = 0 [degree]
+Specular Lighting = On
+Surface Drawing = Smooth Shading
+Texture Angle = 0
+Texture Direction = 0 , 1 , 0 
+Texture File =  
+Texture Material = Metal
+Texture Position = 0 , 0 
+Texture Scale = 1
+Texture Type = Predefined
+Tile Texture = Off
+Transform Texture = Off
+Transparency = 0.0
+X = 0.0 [m]
+Y = 0.00099 [m]
+Z = 0.0 [m]
+  OBJECT VIEW TRANSFORM:
+  Apply Reflection = Off
+  Apply Rotation = Off
+  Apply Scale = Off
+  Apply Translation = Off
+  Principal Axis = Z
+  Reflection Plane Option = XY Plane
+  Rotation Angle = 0.0 [degree]
+  Rotation Axis From = 0 [m], 0 [m], 0 [m]
+  Rotation Axis To = 0 [m], 0 [m], 0 [m]
+  Rotation Axis Type = Principal Axis
+  Scale Vector = 1 , 1 , 1 
+  Translation Vector = 0 [m], 0 [m], 0 [m]
+  X = 0.0 [m]
+  Y = 0.0 [m]
+  Z = 0.0 [m]
+  END
+END""")
+results1.SendCommand(Command="""VIEW:View 1
+  Camera Mode = User Specified
+  CAMERA:
+    Option = Pivot Point and Quaternion
+    Pivot Point = 0.005, 0.0005, -5e-05
+    Scale = 321.359
+    Pan = 0, 0
+    Rotation Quaternion = 0.327336, -0.682359, 0.0141234, 0.653491
+    
+  END
+
+END
+
+> update
+PLANE:Plane 1
+Apply Instancing Transform = On
+Apply Texture = Off
+Blend Texture = On
+Bound Radius = 0.5 [m]
+Colour = 0.75, 0.75, 0.75
+Colour Map = Default Colour Map
+Colour Mode = Variable
+Colour Scale = Linear
+Colour Variable = Pressure
+Colour Variable Boundary Values = Conservative
+Culling Mode = No Culling
+Direction 1 Bound = 1.0 [m]
+Direction 1 Orientation = 0 [degree]
+Direction 1 Points = 10
+Direction 2 Bound = 1.0 [m]
+Direction 2 Points = 10
+Domain List = /DOMAIN GROUP:All Domains
+Draw Faces = On
+Draw Lines = Off
+Instancing Transform = /DEFAULT INSTANCE TRANSFORM:Default Transform
+Invert Plane Bound = Off
+Lighting = On
+Line Colour = 0, 0, 0
+Line Colour Mode = Default
+Line Width = 1
+Max = 10 [Pa]
+Min = 0 [Pa]
+Normal = 1 , 0 , 0 
+Option = ZX Plane
+Plane Bound = Rectangular
+Plane Type = Slice
+Point = 0 [m], 0 [m], 0 [m]
+Point 1 = 0 [m], 0 [m], 0 [m]
+Point 2 = 1 [m], 0 [m], 0 [m]
+Point 3 = 0 [m], 1 [m], 0 [m]
+Range = User Specified
+Render Edge Angle = 0 [degree]
+Specular Lighting = On
+Surface Drawing = Smooth Shading
+Texture Angle = 0
+Texture Direction = 0 , 1 , 0 
+Texture File =  
+Texture Material = Metal
+Texture Position = 0 , 0 
+Texture Scale = 1
+Texture Type = Predefined
+Tile Texture = Off
+Transform Texture = Off
+Transparency = 0.0
+X = 0.0 [m]
+Y = 0.00099 [m]
+Z = 0.0 [m]
+  OBJECT VIEW TRANSFORM:
+  Apply Reflection = Off
+  Apply Rotation = Off
+  Apply Scale = Off
+  Apply Translation = Off
+  Principal Axis = Z
+  Reflection Plane Option = XY Plane
+  Rotation Angle = 0.0 [degree]
+  Rotation Axis From = 0 [m], 0 [m], 0 [m]
+  Rotation Axis To = 0 [m], 0 [m], 0 [m]
+  Rotation Axis Type = Principal Axis
+  Scale Vector = 1 , 1 , 1 
+  Translation Vector = 0 [m], 0 [m], 0 [m]
+  X = 0.0 [m]
+  Y = 0.0 [m]
+  Z = 0.0 [m]
+  END
+END""")
+results1.SendCommand(Command="""VIEW:View 1
+  Camera Mode = User Specified
+  CAMERA:
+    Option = Pivot Point and Quaternion
+    Pivot Point = 0.005, 0.0005, -5e-05
+    Scale = 321.359
+    Pan = 0, 0
+    Rotation Quaternion = 0.216715, -0.692569, 0.13215, 0.675227
+    
+  END
+
+END
+
+> update
+> autolegend plot=/VECTOR:Vector 1, view=VIEW:View 1""")
+results1.SendCommand(Command=""">highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:wall cathode_channel, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:anode_catalyst
+>highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:wall cathode_channel, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:anode_channel
+>highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:wall cathode_channel, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:cathode_catalyst
+>highlight regionlist=/DATA READER/CASE:Case FFF/BOUNDARY:wall cathode_channel, domainlist=/DATA READER/CASE:Case FFF/DOMAIN:electrolyte_membrane""")
+results1.SendCommand(Command="""VECTOR:Vector 1
+Apply Instancing Transform = On
+Colour = 0.75, 0.75, 0.75
+Colour Map = Default Colour Map
+Colour Mode = Use Plot Variable
+Colour Scale = Linear
+Colour Variable = Velocity
+Colour Variable Boundary Values = Conservative
+Coord Frame = Global
+Culling Mode = No Culling
+Direction = X
+Domain List = /DOMAIN GROUP:All Domains
+Draw Faces = On
+Draw Lines = Off
+Instancing Transform = /DEFAULT INSTANCE TRANSFORM:Default Transform
+Lighting = On
+Line Width = 1
+Location List = /PLANE:Plane 1
+Locator Sampling Method = Vertex
+Max = 3 [m s^-1]
+Maximum Number of Items = 100
+Min = 0.0 [m s^-1]
+Normalized = Off
+Number of Samples = 100
+Projection Type = None
+Random Seed = 1
+Range = User Specified
+Reduction Factor = 1.0
+Reduction or Max Number = Reduction
+Sample Spacing = 0.1
+Sampling Aspect Ratio = 1
+Sampling Grid Angle = 0 [degree]
+Specular Lighting = On
+Surface Drawing = Smooth Shading
+Symbol = Line Arrow
+Symbol Size = 1.0
+Transparency = 0.0
+Variable = Velocity
+Variable Boundary Values = Conservative
+  OBJECT VIEW TRANSFORM:
+  Apply Reflection = Off
+  Apply Rotation = Off
+  Apply Scale = Off
+  Apply Translation = Off
+  Principal Axis = Z
+  Reflection Plane Option = XY Plane
+  Rotation Angle = 0.0 [degree]
+  Rotation Axis From = 0 [m], 0 [m], 0 [m]
+  Rotation Axis To = 0 [m], 0 [m], 0 [m]
+  Rotation Axis Type = Principal Axis
+  Scale Vector = 1 , 1 , 1 
+  Translation Vector = 0 [m], 0 [m], 0 [m]
+  X = 0.0 [m]
+  Y = 0.0 [m]
+  Z = 0.0 [m]
+  END
+END""")
+results1.SendCommand(Command="""# Sending visibility action from ViewUtilities
+>show /VECTOR:Vector 1, view=/VIEW:View 1""")
+results1.Exit()
